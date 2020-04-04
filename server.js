@@ -6,12 +6,14 @@ const app = express();
 
 connectDB();
 
+// Middlewares
+app.use(express.json({ extended: false }));
+
 const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
   res.send("API Running M8");
 });
-
 
 // Routes
 app.use("/api/users", require("./routes/api/users"));
