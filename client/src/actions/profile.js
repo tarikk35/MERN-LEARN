@@ -16,3 +16,41 @@ export const getMyProfile = () => async dispatch => {
     });
   }
 };
+
+export const createProfile = (
+  formData,
+  history,
+  edit = false
+) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+    const body = JSON.stringify(formData);
+
+    const response = await axios.post("/api/profile", body, config);
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: response.data
+    });
+
+    dispatch(setAlert(`Profile has been ${edit ? "updated." : "created."}`,"success"));
+
+    if (!edit) {
+      history.push("/dashboard");
+    }
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors)
+      errors.forEach(error => dispatch(setAlert(error.message, "danger")));
+    dispatch({
+      type: GET_PROFILE_FAIL,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};

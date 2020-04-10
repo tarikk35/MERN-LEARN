@@ -23,7 +23,6 @@ router.get("/me", auth, async (req, res) => {
         .status(400)
         .json({ message: "There's no profile for this user." });
     }
-
     res.json(profile);
   } catch (err) {
     console.error(err.message);
@@ -82,6 +81,7 @@ router.post(
     profileFields.social = {};
 
     if (youtube) profileFields.social.youtube = youtube;
+
     if (facebook) profileFields.social.facebook = facebook;
     if (linkedin) profileFields.social.linkedin = linkedin;
     if (instagram) profileFields.social.instagram = instagram;

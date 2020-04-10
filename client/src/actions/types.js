@@ -11,3 +11,4 @@ export const LOGOUT = "LOGOUT";
 // Profile
 export const GET_PROFILE = "GET_PROFILE";
 export const GET_PROFILE_FAIL = "GET_PROFILE_FAIL";
+export const CLEAR_PROFILE = "CLEAR_PROFILE";
