@@ -5,6 +5,7 @@ const request = require("request");
 
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
+const Post = require("../../models/Post");
 const auth = require("../../middlewares/auth");
 
 const router = express.Router();
@@ -142,6 +143,7 @@ router.delete("/", auth, async (req, res) => {
   try {
     // TODO : Remove Posts
     // Remove profile
+    await Post.deleteMany({ user: req.user.id });
     await Profile.findOneAndRemove({ user: req.user.id });
     await User.findOneAndRemove({ _id: req.user.id });
     res.json({ message: "User removed !" });
