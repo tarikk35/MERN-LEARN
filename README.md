@@ -3,7 +3,7 @@ Learning **M**ongo **E**xpress **R**eact **N**ode
 
 ## Some Features
 - Github API Usage on the Back-End
-- Multiple Redux Stores 
+- Multiple Redux Reducers 
 - Authentication with JWT
 - Middleware Usage
 - NoSQL DB & REST API
